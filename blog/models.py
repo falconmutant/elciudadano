@@ -31,7 +31,7 @@ class Notice(models.Model):
 	text = models.TextField()
 	type = models.ForeignKey(NoticeType, on_delete=models.CASCADE)
 	file = models.ManyToManyField(Gallery)
-	search = SearchVectorField(null=True)
+	search = SearchVectorField(null=True, blank=True)
 	alive = models.BooleanField(null=False, default=True)
 
 	def __str__(self):
