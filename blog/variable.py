@@ -10,3 +10,5 @@ TYPE_NOTICE = (
 	('V', 'Video'),
 	('A', 'Audio'),
 )
+
+number_to_months = ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']

@@ -9,6 +9,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 
 from blog.models import *
+from blog.utils import *
 # Create your views here.
 
 
@@ -58,6 +59,7 @@ class Load(APIView):
 			for notice in notices:
 				core = notice.type.core
 				core = core.replace('{id}', str(notice.id))
+				core = core.replace('{date}', display_format_date(notice.date))
 				core = core.replace('{image}', notice.file.get(is_cover=True).file.url)
 				core = core.replace('{title}', notice.title)
 				core = core.replace('{description}', notice.description)

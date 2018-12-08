@@ -1,601 +1,240 @@
-/* ===================================================================
- * Abstract - Main JS
- *
- * ------------------------------------------------------------------- */ 
+/*====================================================
+  TABLE OF CONTENT
+  1. Function Declearetion
+  2. Initialization
+====================================================*/
+/*===========================
+ 1. Function Declearetion
+ ==========================*/
+var themeApp = {
 
-(function($) {
+    particles: function() {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    },
 
-	"use strict";
 
-	var cfg = {		
-		defAnimation   : "fadeInUp",    // default css animation		
-		scrollDuration : 800,           // smoothscroll duration
-		statsDuration  : 4000,          // stats animation duration
-		mailChimpURL   : 'https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc'
-	},
-		
-	$WIN = $(window);
+    video_responsive: function() {
 
+        $('.video-post-format, .blog-details').fitVids();
+    },
 
-	/* Preloader 
-	 * -------------------------------------------------- */
-	var ssPreloader = function() {
-		$WIN.on('load', function() {	
+    preload: function() {
 
-	      // will first fade out the loading animation 
-	    	$("#loader").fadeOut("slow", function(){
+         var win = $(window);
 
-	        // will fade out the whole DIV that covers the website.
-	        $("#preloader").delay(300).fadeOut("slow");
+          win.load(function() {
 
-	      }); 
-	  	});
-	};  
+            $('.preloader').fadeOut(1000);
+        });
+    },
+ 
+ 
+    backtotop: function() {
+        $.scrollUp({
+            scrollName: 'scrollUp', // Element ID
+            topDistance: '300', // Distance from top before showing element (px)
+            topSpeed: 300, // Speed back to top (ms)
+            animation: 'fade', // Fade, slide, none
+            animationInSpeed: 200, // Animation in speed (ms)
+            animationOutSpeed: 200, // Animation out speed (ms)
+            scrollText: '<i class="fa fa-angle-up"></i>', // Text for element
+            activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+        });
+    },
 
-
-	/* audio controls 
-	 * -------------------------------------------------- */ 
-	var ssMediaElementPlayer = function() {
-		$("audio").mediaelementplayer({
-			features: ['playpause','progress', 'tracks','volume']
-	  	});
-	};
-
-
-	/* FitVids
-	------------------------------------------------------ */ 
-	var ssFitVids = function() {
-		$(".fluid-video-wrapper").fitVids();
-	}; 
-
-		
-	/* pretty print
-	 * -------------------------------------------------- */ 
-	var ssPrettyPrint = function() {
-		$('pre').addClass('prettyprint');
-		$( document ).ready(function() {		
-	    	prettyPrint();		
-	  	}); 
-	};
-
-
-	/* Alert Boxes
-  	------------------------------------------------------- */
-  	var ssAlertBoxes = function() {
-
-  		$('.alert-box').on('click', '.close', function() {
-		  $(this).parent().fadeOut(500);
-		}); 
-
-  	};	   
-
-
-	/* superfish
-	 * -------------------------------------------------- */  
-	var ssSuperFish = function() {
-		$('ul.sf-menu').superfish({
-
-	   	animation: { height:'show' }, // slide-down effect without fade-in
-			animationOut: { height:'hide'}, // slide-up effect without fade-in			
-			cssArrows: false, // disable css arrows	
-			delay: 600 // .6 second delay on mouseout
-			
-		});
-	};
 
 	
-  	/* Mobile Menu
-   ------------------------------------------------------ */ 
-   var ssMobileNav = function() {
+    video_post_format: function() {
+$(".video-post-format,.audio-post-format").each(function(){
+     var wrapper = $(this);
+     var embed_url = wrapper.find("iframe").attr("src");
+     var iframe_content = ('<iframe width="560" height="315" src="' + embed_url + '" frameborder="0" allowfullscreen></iframe>');	 
+     var embed_media_div =  wrapper.find(".embed-media")
+     embed_media_div.each(function(){
+              embed_media_div.html(iframe_content);
+          });
+      });
+    },
+	
+   image_post_format: function() {
+$(".image-post-format").each(function(){
+    var wrapper = $(this);
+    var embed_url = wrapper.find("img").attr("src");
+     var iframe_content = ('<img src="' + embed_url + '" />');	 
+     var embed_media_div =  wrapper.find(".embed-media")
+     embed_media_div.each(function(){
+              embed_media_div.html(iframe_content);
+             
+              });
+          });
+    },
+		
+    remove_iframe_form_excerpt: function() {
 
-   	var toggleButton = $('.menu-toggle'),
-          nav = $('.main-navigation');
-
-	   toggleButton.on('click', function(event){
-			event.preventDefault();
-
-			toggleButton.toggleClass('is-clicked');
-			nav.slideToggle();
-		});
-
-	  	if (toggleButton.is(':visible')) nav.addClass('mobile');
-
-	  	$WIN.resize(function() {
-	   	if (toggleButton.is(':visible')) nav.addClass('mobile');
-	    	else nav.removeClass('mobile');
-	  	});
-
-	  	$('#main-nav-wrap li a').on("click", function() {   
-	   	if (nav.hasClass('mobile')) {   		
-	   		toggleButton.toggleClass('is-clicked'); 
-	   		nav.fadeOut();   		
-	   	}     
-	  	});
-
-   }; 
+    $(".blog-excerpt iframe, .blog-excerpt img, .blog-excerpt br").remove(); 
+    $(".blog-excerpt iframe, .blog-excerpt img, .blog-excerpt br").remove();
    
-
-  /* search
-   ------------------------------------------------------ */ 
-   var ssSearch = function() {
-
-   	var searchWrap = $('.search-wrap');
-	   var searchField = searchWrap.find('.search-field');
-	   var closeSearch = $('#close-search');
-	   var searchTrigger = $('.search-trigger');
-	   var body = $('body');
-
-	   searchTrigger.on('click', function(e){
-
-	      e.preventDefault();
-	      e.stopPropagation();   
-	      var $this = $(this);
-
-	      body.addClass('search-visible');
-	      setTimeout(function(){
-	         $('.search-wrap').find('.search-field').focus();
-	      }, 100);
-
-	   });
-
-
-	   closeSearch.on('click', function(){
-	      var $this = $(this);
-	      
-	      if(body.hasClass('search-visible')){
-	         body.removeClass('search-visible');
-	         setTimeout(function(){
-	            $('.search-wrap').find('.search-field').blur();
-	         }, 100);
-	      }
-	   });
-
-	   searchWrap.on('click',  function(e){
-	   	if( !$(e.target).is('.search-field') ) {   		
-	   		closeSearch.trigger('click');   		
-	   	}
-	   });
-
-	   searchField.on('click', function(e){
-	      e.stopPropagation();
-	   });
-
-	   searchField.attr({placeholder: 'Ingresa las palabras', autocomplete: 'off'});
-
-   };
-	 
-
-
-	/*	Masonry
-	------------------------------------------------------ */
-	var ssMasonryFolio = function() {
-		var containerBricks = $('.bricks-wrapper');
-
-		containerBricks.imagesLoaded( function() {
-
-			containerBricks.masonry( {
-			  	itemSelector: '.entry',
-			  	columnWidth: '.grid-sizer',
-	  			percentPosition: true,
-			  	resize: true
-			});
-
-		});
-	};
-
-
-  /* animate bricks
-	* ------------------------------------------------------ */
-	var ssBricksAnimate = function() {
-
-		var animateEl = $('.animate-this');
-
-		$WIN.on('load', function() {
-			setTimeout(function() {
-				animateEl.each(function(ctr) {
-						var el = $(this);
-
-						setTimeout(function() {
-							el.addClass('animated fadeInUp');
-						}, ctr * 200);
-
-				});
-			}, 200);
-		});
-
-		$WIN.on('resize', function() {
-			// remove animation classes
-			animateEl.removeClass('animate-this animated fadeInUp');
-		});
-
-	};
-		
-
-  /* Flex Slider
-	* ------------------------------------------------------ */
-	var ssFlexSlider = function() {
-
-		$WIN.on('load', function() {
-
-		   $('#featured-post-slider').flexslider({
-				namespace: "flex-",
-		      controlsContainer: "", // ".flex-content",
-		      animation: 'fade',
-		      controlNav: false,
-		      directionNav: true,
-		      smoothHeight: false,
-		      slideshowSpeed: 7000,
-		      animationSpeed: 600,
-		      randomize: false,
-		      touch: true,
-		   });
-
-		   $('.post-slider').flexslider({
-		   	namespace: "flex-",
-		      controlsContainer: "",
-		      animation: 'fade',
-		      controlNav: true,
-		      directionNav: false,
-		      smoothHeight: false,
-		      slideshowSpeed: 7000,
-		      animationSpeed: 600,
-		      randomize: false,
-		      touch: true,
-		      start: function (slider) {
-					if (typeof slider.container === 'object') {
-						slider.container.on("click", function (e) {
-							if (!slider.animating) {
-								slider.flexAnimate(slider.getTarget('next'));
-							}
-						});
-					}
-
-					$('.bricks-wrapper').masonry('layout');
-				}
-		   });
-
-	   });
-	};	
-
-
-  /* Smooth Scrolling
-	* ------------------------------------------------------ */
-	var ssSmoothScroll = function() {
-
-		$('.smoothscroll').on('click', function (e) {
-			var target = this.hash,
-			$target    = $(target);
-
-		 	e.preventDefault();
-		 	e.stopPropagation();
-
-	    	$('html, body').stop().animate({
-	       	'scrollTop': $target.offset().top
-	      }, cfg.scrollDuration, 'swing').promise().done(function () {
-
-	      	// check if menu is open
-	      	if ($('body').hasClass('menu-is-open')) {
-					$('#header-menu-trigger').trigger('click');
-				}
-
-	      	window.location.hash = target;
-	      });
-	  	});
-
-	};
-
-
-  /* Placeholder Plugin Settings
-	* ------------------------------------------------------ */
-	var ssPlaceholder = function() {
-		$('input, textarea, select').placeholder();  
-	}; 
-
-
-  /* AjaxChimp
-	* ------------------------------------------------------ */
+     var str = $( ".blog-excerpt" ).text();
+    
+     $(".blog-excerpt").text(function(index, currentText) {
+        
+            return currentText.substr(0, 360);
+       });
+	},
 	
+     sticky: function() {
+      var windows = $(window);
+      windows.on('scroll',function(){
+      var scroll = windows.scrollTop();
+      if(scroll < 110){   
 
-  /* Back to Top
-	* ------------------------------------------------------ */
-	var ssBackToTop = function() {
+         $("#stickey-menu").removeClass("stickey");
+        
+    }else{
 
-		var pxShow  = 500,         // height on which the button will show
-		fadeInTime  = 400,         // how slow/fast you want the button to show
-		fadeOutTime = 400,         // how slow/fast you want the button to hide
-		scrollSpeed = 300,         // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
-		goTopButton = $("#go-top")
-
-		// Show or hide the sticky footer button
-		$(window).on('scroll', function() {
-			if ($(window).scrollTop() >= pxShow) {
-				goTopButton.fadeIn(fadeInTime);
-			} else {
-				goTopButton.fadeOut(fadeOutTime);
-			}
-		});
-	};	
-
-
-  /* Map
-	* ------------------------------------------------------ */
-	var ssGoogleMap = function() { 
-
-		if (typeof google === 'object' && typeof google.maps === 'object') {
-
-			var latitude = 14.549072,
-				 longitude = 121.046958,
-				 map_zoom = 15,		 
-				 main_color = '#d8ac00',
-				 saturation_value = -30,
-				 brightness_value = 5,
-				 marker_url = null,
-				 winWidth = $(window).width();	
-
-		   // show controls
-		   $("#map-zoom-in, #map-zoom-out").show();	 	 
-
-		   // marker url
-			if ( winWidth > 480 ) {
-				marker_url = 'images/icon-location@2x.png';                    
-		   } else {
-		      marker_url = 'images/icon-location.png';            
-		   }	 
-
-			// map style
-			var style = [ 
-				{
-					// set saturation for the labels on the map
-					elementType: "labels",
-					stylers: [
-						{ saturation: saturation_value }
-					]
-				},  
-			   {	// poi stands for point of interest - don't show these lables on the map 
-					featureType: "poi",
-					elementType: "labels",
-					stylers: [
-						{visibility: "off"}
-					]
-				},
-				{
-					// don't show highways lables on the map
-			      featureType: 'road.highway',
-			      elementType: 'labels',
-			      stylers: [
-			         { visibility: "off" }
-			      ]
-			   }, 
-				{ 	
-					// don't show local road lables on the map
-					featureType: "road.local", 
-					elementType: "labels.icon", 
-					stylers: [
-						{ visibility: "off" } 
-					] 
-				},
-				{ 
-					// don't show arterial road lables on the map
-					featureType: "road.arterial", 
-					elementType: "labels.icon", 
-					stylers: [
-						{ visibility: "off" }
-					] 
-				},
-				{
-					// don't show road lables on the map
-					featureType: "road",
-					elementType: "geometry.stroke",
-					stylers: [
-						{ visibility: "off" }
-					]
-				}, 
-				// style different elements on the map
-				{ 
-					featureType: "transit", 
-					elementType: "geometry.fill", 
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				}, 
-				{
-					featureType: "poi",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "poi.government",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "poi.sport_complex",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "poi.attraction",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "poi.business",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "transit",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "transit.station",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "landscape",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-					
-				},
-				{
-					featureType: "road",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				},
-				{
-					featureType: "road.highway",
-					elementType: "geometry.fill",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				}, 
-				{
-					featureType: "water",
-					elementType: "geometry",
-					stylers: [
-						{ hue: main_color },
-						{ visibility: "on" }, 
-						{ lightness: brightness_value }, 
-						{ saturation: saturation_value }
-					]
-				}
-			];
-				
-			// map options
-			var map_options = {
-
-		      	center: new google.maps.LatLng(latitude, longitude),
-		      	zoom: 15,
-		      	panControl: false,
-		      	zoomControl: false,
-		        	mapTypeControl: false,
-		      	streetViewControl: false,
-		      	mapTypeId: google.maps.MapTypeId.ROADMAP,
-		      	scrollwheel: false,
-		      	styles: style
-
-		    	};
-
-		   // inizialize the map
-			var map = new google.maps.Map(document.getElementById('map-container'), map_options);
-
-			// add a custom marker to the map				
-			var marker = new google.maps.Marker({
-
-				 	position: new google.maps.LatLng(latitude, longitude),
-				 	map: map,
-				 	visible: true,
-				 	icon: marker_url
-				 
-				});
-
-			// add custom buttons for the zoom-in/zoom-out on the map
-
-
-			var zoomControlDiv = document.createElement('div');
-			var zoomControl = new CustomZoomControl(zoomControlDiv, map);
-
-			// insert the zoom div on the top right of the map
-			map.controls[google.maps.ControlPosition.TOP_RIGHT].push(zoomControlDiv);
-
-		} 
-
-	};
-	function CustomZoomControl(controlDiv, map) {
-
-        // grap the zoom elements from the DOM and insert them in the map
-        var controlUIzoomIn= document.getElementById('map-zoom-in'),
-             controlUIzoomOut= document.getElementById('map-zoom-out');
-
-        controlDiv.appendChild(controlUIzoomIn);
-        controlDiv.appendChild(controlUIzoomOut);
-
-        // Setup the click event listeners and zoom-in or out according to the clicked element
-        google.maps.event.addDomListener(controlUIzoomIn, 'click', function() {
-            map.setZoom(map.getZoom()+1)
-        });
-        google.maps.event.addDomListener(controlUIzoomOut, 'click', function() {
-            map.setZoom(map.getZoom()-1)
-        });
+        $("#stickey-menu").addClass("stickey");
+    }
+    
+    
+       });
+	},
+	
+	
+    init: function() {
+		themeApp.preload();
+		themeApp.sticky();
+        themeApp.particles();
+        themeApp.backtotop();
+        themeApp.video_post_format();
+		themeApp.video_responsive();
+		themeApp.image_post_format();
+		themeApp.remove_iframe_form_excerpt();
 
     }
 
+}
 
+ 
+/*===========================
+2. Initialization
+==========================*/
+$(document).ready(function() {
+    themeApp.init();
 
-  /* Initialize
-	* ------------------------------------------------------ */
-	(function ssInit() {
-
-		ssPreloader();
-		ssMediaElementPlayer();
-		ssFitVids();
-		ssPrettyPrint();
-		ssAlertBoxes();
-		ssSuperFish();
-		ssMobileNav();
-		ssSearch();
-		ssMasonryFolio();
-		ssBricksAnimate();
-		ssFlexSlider();
-		ssSmoothScroll();
-		ssPlaceholder();
-		ssBackToTop();
-		ssGoogleMap();
-
-	})();
+$('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+   });
+});
 
 
 
-})(jQuery);
+
