@@ -169,18 +169,7 @@
 	/*	Masonry
 	------------------------------------------------------ */
 	var ssMasonryFolio = function() {
-		var containerBricks = $('.bricks-wrapper');
 
-		containerBricks.imagesLoaded( function() {
-
-			containerBricks.masonry( {		  
-			  	itemSelector: '.entry',
-			  	columnWidth: '.grid-sizer',
-	  			percentPosition: true,
-			  	resize: true
-			});			
-
-		});
 	};
 
 
@@ -188,25 +177,7 @@
 	* ------------------------------------------------------ */
 	var ssBricksAnimate = function() {
 
-		var animateEl = $('.animate-this');
 
-		$WIN.on('load', function() {				
-			setTimeout(function() {
-				animateEl.each(function(ctr) {				
-						var el = $(this);
-						
-						setTimeout(function() {
-							el.addClass('animated fadeInUp');														
-						}, ctr * 200);
-
-				});
-			}, 200);				
-		});
-
-		$WIN.on('resize', function() {	
-			// remove animation classes	
-			animateEl.removeClass('animate-this animated fadeInUp');
-		});
 
 	};
 		
@@ -605,7 +576,7 @@
 
   /* Initialize
 	* ------------------------------------------------------ */
-	(function ssInit() {	
+	(function ssInit() {
 
 		ssPreloader();
 		ssMediaElementPlayer();
@@ -615,12 +586,12 @@
 		ssSuperFish();
 		ssMobileNav();
 		ssSearch();
-		ssMasonryFolio();		
+		ssMasonryFolio();
 		ssBricksAnimate();
-		ssFlexSlider();				
+		ssFlexSlider();
 		ssSmoothScroll();
 		ssPlaceholder();
-		ssAjaxChimp();		
+		ssAjaxChimp();
 		ssBackToTop();
 		ssGoogleMap();
 
