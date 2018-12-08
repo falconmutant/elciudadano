@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="786a83e0-36f8-4795-b1ea-e455f28c1935" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +26,7 @@
           <entry key="Django Console" value="80" />
           <entry key="css" value="39" />
           <entry key="dummy" value="4" />
-          <entry key="html" value="1019" />
+          <entry key="html" value="1101" />
           <entry key="js" value="101" />
           <entry key="py" value="1019" />
         </counts>
@@ -35,7 +34,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="39" />
-          <entry key="HTML" value="1019" />
+          <entry key="HTML" value="1101" />
           <entry key="JavaScript" value="101" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Python" value="1099" />
@@ -90,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="341">
-              <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
+              <caret line="152" column="39" selection-start-line="152" selection-start-column="39" selection-end-line="152" selection-end-column="39" />
               <folding>
                 <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#i#0;n#a#0;n#div#2;n#div#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -515,7 +514,7 @@
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
-          <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
+          <caret line="152" column="39" selection-start-line="152" selection-start-column="39" selection-end-line="152" selection-end-column="39" />
           <folding>
             <element signature="n#header#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#i#0;n#a#0;n#div#2;n#div#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />

@@ -150,16 +150,14 @@
                 data.forEach(function(article){
                     $('#articles').append(article.article);
                 });
-                //$.holdReady( true );
-				$.getScript( "{% static "js/main.js" %}", function() {
-		            $.holdReady( false );
-				});
+                console.log('termino');
+            }).done(function () {
+	            $.getScript("{% static "js/main.js" %}", function(){
+	                console.log('main.js load');
+	            });
             });
         });
-
 	</script>
-	<script src=""></script>
-
 </body>
 
 </html>
