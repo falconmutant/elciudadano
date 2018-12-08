@@ -152,6 +152,12 @@
                     $('#articles').append(article.article);
                 });
 
+                var cfg = {
+					defAnimation   : "fadeInUp",    // default css animation
+					scrollDuration : 800,           // smoothscroll duration
+					statsDuration  : 4000
+				},
+
                 $WIN = $(window);
 
                 var containerBricks = $('.bricks-wrapper');
