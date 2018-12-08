@@ -66,34 +66,7 @@
 
 	<!-- masonry
 	================================================== -->
-	<section id="bricks">
-		<div id="row" class="row masonry">
-			<div class="bricks-wrapper"><div class="grid-sizer"></div><article class="brick entry format-standard animate-this">
-	<div class="entry-thumb">
-		<a href="" data-id="1" class="thumb-link">
-			<img src="/media/17523680_10208697104292911_8720097684277964048_n.jpg" alt="building">
-		</a>
-	</div>
-
-	<div class="entry-text">
-		<div class="entry-header">
-			<h1 class="entry-title"><a href="" data-id="1">Esto si funciona</a></h1>
-		</div>
-		<div class="entry-excerpt">
-			Esto es una prueba para ver el correcto funcionamiento de lo que se esta haciendo
-		</div>
-	</div>
-</article></div>
-		</div> <!-- end row -->
-
-		<div class="row">
-			<nav class="pagination">
-				<span class="page-numbers prev inactive">Anterior</span>
-				<span class="page-numbers current">1</span>
-				<a href="#" class="page-numbers next">Siguiente</a>
-			</nav>
-		</div>
-	</section> <!-- end bricks -->
+	<div id="row"></div>
 
 	<!-- footer
 	================================================== -->
@@ -161,22 +134,28 @@
 	<script src="{% static "js/jquery-2.1.3.min.js" %}"></script>
 	<script src="{% static "js/plugins.js" %}"></script>
 	<script src="{% static "js/jquery.appear.js" %}"></script>
-	<script src="{% static "js/main.js" %}"></script>
 	<script>
-		var token = '{{csrf_token}}';
-		$(document).ready(function(){
-		    $.post('../../Load/', {
-			    target: 'initialize',
-				csrfmiddlewaretoken: token
-			}, function(data){
-		        div = '<div class="bricks-wrapper"><div class="grid-sizer"></div>';
-			    data.forEach(function(article){
-			        div += article.article;
-		        });
-			    div += '</div>';
-			    $('#row').append(div);
-			});
-		});
+        var token = '{{csrf_token}}';
+        $(document).ready(function(){
+            $.post('../../Load/', {
+                target: 'initialize',
+                csrfmiddlewaretoken: token
+            }, function(data){
+                div = '<section id="bricks"><div class="row masonry"><div class="bricks-wrapper"><div class="grid-sizer"></div>';
+                data.forEach(function(article){
+                    div += article.article;
+                });
+                div += '</div></div></section>';
+                $('#row').append(div);
+                $('#row').trigger('create');
+
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.className = 'ScriptGadget';
+                s.src = '{% static "js/main.js" %}';
+                $("body").append(s);
+            });
+        });
 	</script>
 </body>
 

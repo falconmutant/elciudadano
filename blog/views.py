@@ -54,7 +54,7 @@ class Load(APIView):
 	def post(self, request):
 		data = []
 		if request.data['target'] == 'initialize':
-			notices = Notice.objects.filter(alive=True).order_by('-id')[:10]
+			notices = Notice.objects.filter(alive=True).order_by('date')[:10]
 			for notice in notices:
 				core = notice.type.core
 				core = core.replace('{id}', str(notice.id))

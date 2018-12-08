@@ -27,6 +27,7 @@ class NoticeType(models.Model):
 
 class Notice(models.Model):
 	title = models.TextField()
+	data = models.DateField()
 	description = models.TextField()
 	text = models.TextField()
 	type = models.ForeignKey(NoticeType, on_delete=models.CASCADE)
