@@ -138,11 +138,8 @@
 	<!-- Java Script
 	================================================== -->
 	<script src="{% static "js/jquery-2.1.3.min.js" %}"></script>
-	<script src="{% static "js/plugins.js" %}"></script>
-	<script src="{% static "js/jquery.appear.js" %}"></script>
-	<script src="{% static "js/main.js" %}"></script>
 	<script>
-        var token = '{{csrf_token}}';
+		var token = '{{csrf_token}}';
         $(document).ready(function(){
             $.post('../../Load/', {
                 target: 'initialize',
@@ -151,101 +148,13 @@
                 data.forEach(function(article){
                     $('#articles').append(article.article);
                 });
-
-                var cfg = {
-					defAnimation   : "fadeInUp",    // default css animation
-					scrollDuration : 800,           // smoothscroll duration
-					statsDuration  : 4000
-				},
-
-                $WIN = $(window);
-
-                var containerBricks = $('.bricks-wrapper');
-				containerBricks.imagesLoaded( function() {
-					containerBricks.masonry( {
-					    itemSelector: '.entry',
-					    columnWidth: '.grid-sizer',
-			            percentPosition: true,
-					    resize: true
-					});
-				});
-
-				var animateEl = $('.animate-this');
-				$WIN.on('load', function() {
-					setTimeout(function() {
-						animateEl.each(function(ctr) {
-							var el = $(this);
-							setTimeout(function() {
-								el.addClass('animated fadeInUp');
-							}, ctr * 200);
-						});
-					}, 200);
-				});
-				$WIN.on('resize', function() {
-					// remove animation classes
-					animateEl.removeClass('animate-this animated fadeInUp');
-				});
-				$WIN.on('load', function() {
-					$('#featured-post-slider').flexslider({
-						namespace: "flex-",
-						controlsContainer: "", // ".flex-content",
-						animation: 'fade',
-						controlNav: false,
-						directionNav: true,
-						smoothHeight: false,
-				        slideshowSpeed: 7000,
-				        animationSpeed: 600,
-				        randomize: false,
-				        touch: true,
-				    });
-
-				    $('.post-slider').flexslider({
-				        namespace: "flex-",
-					    controlsContainer: "",
-                        animation: 'fade',
-                        controlNav: true,
-                        directionNav: false,
-                        smoothHeight: false,
-                        slideshowSpeed: 7000,
-                        animationSpeed: 600,
-                        randomize: false,
-                        touch: true,
-				        start: function (slider) {
-				            if (typeof slider.container === 'object') {
-								slider.container.on("click", function (e) {
-									if (!slider.animating) {
-										slider.flexAnimate(slider.getTarget('next'));
-									}
-								});
-							}
-					        $('.bricks-wrapper').masonry('layout');
-						}
-				    });
-
-			    });
-
-				$('.smoothscroll').on('click', function (e) {
-					var target = this.hash,
-					$target    = $(target);
-
-				    e.preventDefault();
-				    e.stopPropagation();
-
-			        $('html, body').stop().animate({
-			            'scrollTop': $target.offset().top
-			        }, cfg.scrollDuration, 'swing').promise().done(function () {
-
-			            // check if menu is open
-			            if ($('body').hasClass('menu-is-open')) {
-							$('#header-menu-trigger').trigger('click');
-						}
-
-			            window.location.hash = target;
-			        });
-			    });
             });
         });
 	</script>
+	<script src="{% static "js/plugins.js" %}"></script>
+	<script src="{% static "js/jquery.appear.js" %}"></script>
+	<script src="{% static "js/main.js" %}"></script>
+
 </body>
 
 </html>
