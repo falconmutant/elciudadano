@@ -186,46 +186,6 @@
 	* ------------------------------------------------------ */
 	var ssFlexSlider = function() {
 
-		$WIN.on('load', function() {
-
-		   $('#featured-post-slider').flexslider({
-				namespace: "flex-",
-		      controlsContainer: "", // ".flex-content",
-		      animation: 'fade',
-		      controlNav: false,
-		      directionNav: true,
-		      smoothHeight: false,
-		      slideshowSpeed: 7000,
-		      animationSpeed: 600,
-		      randomize: false,
-		      touch: true,		
-		   });
-
-		   $('.post-slider').flexslider({
-		   	namespace: "flex-",
-		      controlsContainer: "",
-		      animation: 'fade',
-		      controlNav: true,
-		      directionNav: false,
-		      smoothHeight: false,
-		      slideshowSpeed: 7000,
-		      animationSpeed: 600,
-		      randomize: false,
-		      touch: true,
-		      start: function (slider) {
-					if (typeof slider.container === 'object') {
-						slider.container.on("click", function (e) {
-							if (!slider.animating) {
-								slider.flexAnimate(slider.getTarget('next'));
-							}
-						});
-					}
-
-					$('.bricks-wrapper').masonry('layout');								
-				}
-		   });
-
-	   });
 	};	
 
 
@@ -233,25 +193,7 @@
 	* ------------------------------------------------------ */
 	var ssSmoothScroll = function() {
 
-		$('.smoothscroll').on('click', function (e) {
-			var target = this.hash,
-			$target    = $(target);
-	 	
-		 	e.preventDefault();
-		 	e.stopPropagation();	   	
 
-	    	$('html, body').stop().animate({
-	       	'scrollTop': $target.offset().top
-	      }, cfg.scrollDuration, 'swing').promise().done(function () {
-
-	      	// check if menu is open
-	      	if ($('body').hasClass('menu-is-open')) {
-					$('#header-menu-trigger').trigger('click');
-				}
-
-	      	window.location.hash = target;
-	      });
-	  	});
 
 	};
 
@@ -265,35 +207,6 @@
 
   /* AjaxChimp
 	* ------------------------------------------------------ */
-	var ssAjaxChimp = function() {
-
-		$('#mc-form').ajaxChimp({
-			language: 'es',
-		   url: cfg.mailChimpURL
-		});
-
-		// Mailchimp translation
-		//
-		//  Defaults:
-		//	 'submit': 'Submitting...',
-		//  0: 'We have sent you a confirmation email',
-		//  1: 'Please enter a value',
-		//  2: 'An email address must contain a single @',
-		//  3: 'The domain portion of the email address is invalid (the portion after the @: )',
-		//  4: 'The username portion of the email address is invalid (the portion before the @: )',
-		//  5: 'This email address looks fake or invalid. Please enter a real email address'
-
-		$.ajaxChimp.translations.es = {
-		  'submit': 'Submitting...',
-		  0: '<i class="fa fa-check"></i> We have sent you a confirmation email',
-		  1: '<i class="fa fa-warning"></i> You must enter a valid e-mail address.',
-		  2: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-		  3: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-		  4: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-		  5: '<i class="fa fa-warning"></i> E-mail address is not valid.'
-		} 
-
-	};
 	
 
   /* Back to Top
@@ -591,7 +504,6 @@
 		ssFlexSlider();
 		ssSmoothScroll();
 		ssPlaceholder();
-		ssAjaxChimp();
 		ssBackToTop();
 		ssGoogleMap();
 
