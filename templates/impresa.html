@@ -47,16 +47,15 @@
             </div>
         </header>
 
-        <div class="slider-area">
+        <div class="slider-area page-title-wrapper">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col p-0">
 						<div class="slider-wrapper-2">
 							<div id="particles-js">
-								<div class="slider-fixed-text">
+								<div class="slider-fixed-text container">
 									<h1>El Ciudadano</h1>
-									<p class="flying-text">Con el reportaje y la crónica como género periodístico.</p>
-			                    </div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -66,16 +65,8 @@
 
         <div class="appix-blog-content section-ptb">
 			<div class="container">
-				<div id="row" class="row">
-				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<div class="cust-pagi">
-							<nav class="pagination" role="navigation">
-								<span class="page-number">Pagina 1 of 1</span>
-							</nav>
-						</div>
-					</div>
+					Error
 				</div>
 			</div>
         </div>
@@ -167,18 +158,5 @@
 		<script src="{% static "js/plugins.js" %}"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 		<script src="{% static "js/main.js" %}"></script>
-		<script>
-			var token = '{{csrf_token}}';
-	        $(document).ready(function(){
-	            $.post('../../Load/', {
-	                target: 'initialize',
-	                csrfmiddlewaretoken: token
-	            }, function(data){
-	                data.forEach(function(article){
-	                    $('#row').append(article.article);
-	                });
-	            });
-	        });
-		</script>
    </body>
 </html>

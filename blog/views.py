@@ -51,11 +51,22 @@ def index(request):
 	return render(request, 'index.html', locals())
 
 
+def impresa(requests):
+	return render(requests, 'impresa.html', locals())
+
+
+class Single(APIView):
+	def get(self, request, id):
+		notice = Notice.objects.get(id=id)
+		image = notice.file.get(is_cover=True).file.url
+		return render(request, 'single.html', locals())
+
+
 class Load(APIView):
 	def post(self, request):
 		data = []
 		if request.data['target'] == 'initialize':
-			notices = Notice.objects.filter(alive=True).order_by('date')[:10]
+			notices = Notice.objects.filter(alive=True).order_by('-date')[:10]
 			for notice in notices:
 				core = notice.type.core
 				core = core.replace('{id}', str(notice.id))
