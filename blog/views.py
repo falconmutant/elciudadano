@@ -58,20 +58,37 @@ def impresa(requests):
 	for year in years:
 		months = Notice.objects.filter(date__year=str(year.date).split('-')[0]).distinct('date__month').order_by('-date__month')
 		count = 0
-		mm = ''
 		for month in months:
 			if count == 0:
-				mm = number_to_months[int(str(month.date).split('-')[1])]
+				month1 = number_to_months[int(str(month.date).split('-')[1])]
 				count += 1
 			elif count == 1:
-				mm += ' - '
 				count += 1
 			elif count == 2:
-				mm += number_to_months[int(str(month.date).split('-')[1])] + ' '+str(month.date).split('-')[0]
-				meses.append(mm)
+				month2 = number_to_months[int(str(month.date).split('-')[1])]
+				meses.append(month2+' - '+month1+ ' '+str(month.date).split('-')[0])
 				count = 0
 				print(meses)
 	return render(requests, 'impresa.html', locals())
+
+
+class Pdf(APIView):
+	def get(self, request, year, month1, month2):
+		pos = 0
+		for month in number_to_months:
+			if month == month1:
+				month1 = pos
+			if month == month2:
+				month2 = pos
+			pos += 1
+		notices = Notice.objects.filter(date__year=year, date__month__range=(month1, month2))
+		data = []
+		for notice in notices:
+			data.append({
+				'image': notice.file.get(is_cover=True).file.url,
+				'text': notice.text
+			})
+		return Render.render('pdf.html', {'notices': data})
 
 
 class Single(APIView):

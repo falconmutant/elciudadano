@@ -66,86 +66,24 @@
         <div class="appix-blog-content section-ptb">
 			<div class="container">
 				<div class="row">
-					{% for mes in meses %}
-						<div class="col-sm-6">
-							<div class="blog-item post tag-getting-started">
-								<div class="standard-post-format post tag-getting-started ">
-									<div class="blog-image">
-										<a onclick="pdf('{{ mes }}');"><img src="{% static "images/banner.png" %}" alt=""></a>
-									</div>
-									<div class="blog-details">
-										<h3 class="blog-post-title"><a onclick="pdf('{{ mes }}');">{{ mes }}</a></h3>
-									</div>
-								</div>
+					{% for notice in notices %}
+						<div class="col-sm-12 col-md-12">
+	                        <div class="single-blog-item post tag-getting-started">
+	                            <div class="details-img">
+	                                <figure class="figure">
+	                                    <img src="{{ notice.image }}" class="figure-img img-fluid" alt="">
+	                                </figure>
+	                            </div>
+	                            <div class="blog-details">
+	                                <p>{{ notice.text }}</p>
+	                            </div>
+	                            <div class="clearfix"></div>
 							</div>
-						</div>
+	                    </div>
 					{% endfor %}
 				</div>
 			</div>
         </div>
-
-		<div class="footer-area section-ptb-3">
-		   <div class="container">
-		      <div class="row">
-		         <div class="col-md-6 col-lg-4">
-		            <div class="column">
-		               <div class="widget-title">
-		                  <h3>Acerca de</h3>
-		               </div>
-		                 <p>Aquí se exponen los programas y proyectos que desarrollaron los Gobiernos de Movimiento Ciudadano en los Municipios del interior de Tamaulipas</p>
-		               <div class="themeix-social-area">
-		                  <a class="themeix-tool" href="#">
-		                     <i class="fa fa-twitter"></i>
-		                     <div id="colorbox" class="themeix-color twitter-color"></div>
-		                  </a>
-		                  <a class="themeix-tool" href="#">
-		                     <i class="fa fa-facebook"></i>
-		                     <div id="colorboxs" class="themeix-color facebook-color"></div>
-		                  </a>
-		                  <a class="themeix-tool" href="#">
-		                     <i class="fa fa-google-plus"></i>
-		                     <div id="colorboxss" class="themeix-color google-color"></div>
-		                  </a>
-		               </div>
-		            </div>
-		         </div>
-		         <div class="col-md-6 col-lg-4">
-		            <div class="column">
-		               <div class="widget-title">
-		                  <h3>Sitio</h3>
-		               </div>
-		               <div class="widget-content">
-		                  <ul>
-		                     <li><a href="">Acerca de</a></li>
-		                     <li><a href="">FAQ</a></li>
-		                     <li><a href="">Politica de privacidad</a></li>
-		                  </ul>
-		               </div>
-		            </div>
-		         </div>
-		         <div class="col-md-6 col-lg-4">
-		            <div class="column">
-		             <div class="widget-content">
-		               <section class="gh-subscribe">
-		                  <div class="widget-title">
-		                     <h3>Subscribe</h3>
-		                     <p>Recibe en tu correo electrónico las noticias de El Ciudadano de Tamaulipas y entérate de todas las novedades que tenemos para ti. Sólo déjanos tu email.</p>
-		                  </div>
-		                 <form action="/subscribe">
-		                   <div class="input-group">
-		                     <input type="text" class="form-control subscribe-input" placeholder="subscribe">
-		                     <span class="input-group-btn">
-		                        <button class="btn btn-secondary subscribe-text" type="button">Subscribe</button>
-		                     </span>
-		                   </div>
-		                 </form>
-		                 </section>
-		               </div>
-		            </div>
-		         </div>
-		      </div>
-		   </div>
-		</div>
 
         <div class="footer-overlay blog-footer">
 		   <div class="blog-footer-overlya">
@@ -171,13 +109,5 @@
 		<script src="{% static "js/plugins.js" %}"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 		<script src="{% static "js/main.js" %}"></script>
-		<script>
-			function pdf(date){
-			    var month1 = date.split(' - ')[0];
-			    var month2 = date.split(' - ')[1].split(' ')[0];
-			    var year = date.split(' - ')[1].split(' ')[1];
-			    window.open('/pdf/'+year+'/'+month1+'/'+month2+'/', "Edición Impresa", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=400, height=400");
-			}
-		</script>
    </body>
 </html>
