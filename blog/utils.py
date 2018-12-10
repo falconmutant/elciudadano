@@ -1,7 +1,8 @@
-from io import BytesIO
-from django.http import HttpResponse
+from io import StringIO
+from xhtml2pdf import pisa
 from django.template.loader import get_template
-import xhtml2pdf.pisa as pisa
+from django.template import Context
+from django.http import HttpResponse
 
 from blog.variable import *
 
@@ -19,10 +20,11 @@ class Render:
 	@staticmethod
 	def render(path, params):
 		template = get_template(path)
-		html = template.render(params)
-		response = BytesIO()
-		pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), response)
+		context = Context(params)
+		html = template.render(context)
+		result = StringIO()
+		pdf = pisa.pisaDocument(StringIO(html.encode("ISO-8859-1")), result)
 		if not pdf.err:
-			return HttpResponse(response.getvalue(), content_type='application/pdf')
+			return HttpResponse(result.getvalue(), content_type='application/pdf')
 		else:
 			return HttpResponse("Error Rendering PDF", status=400)
