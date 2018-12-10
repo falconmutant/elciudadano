@@ -10,6 +10,7 @@ from rest_framework.authtoken.models import Token
 
 from blog.models import *
 from blog.utils import *
+from blog.variable import *
 # Create your views here.
 
 
@@ -52,6 +53,24 @@ def index(request):
 
 
 def impresa(requests):
+	meses = []
+	years = Notice.objects.all().distinct('date__year').order_by('-date__year')
+	for year in years:
+		months = Notice.objects.filter(date__year=str(year.date).split('-')[0]).distinct('date__month').order_by('-date__month')
+		count = 0
+		mm = ''
+		for month in months:
+			if count == 0:
+				mm = number_to_months[int(str(month.date).split('-')[1])]
+				count += 1
+			elif count == 1:
+				mm += ' - '
+				count += 1
+			elif count == 2:
+				mm += number_to_months[int(str(month.date).split('-')[1])] + ' '+str(month.date).split('-')[0]
+				meses.append(mm)
+				count = 0
+				print(meses)
 	return render(requests, 'impresa.html', locals())
 
 
