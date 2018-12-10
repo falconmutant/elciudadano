@@ -20,6 +20,6 @@ class Render:
 		template = get_template(path)
 		html = template.render(params)
 		pdf_file = HTML(string=html).write_pdf()
-		response = HttpResponse(pdf_file, content_type='application/pdf')
+		response = HttpResponse(pdf_file.encode("UTF-8"), content_type='application/pdf')
 		response['Content-Disposition'] = 'filename="home_page.pdf"'
 		return response
