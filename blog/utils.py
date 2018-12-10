@@ -1,6 +1,7 @@
-from weasyprint import HTML, CSS
-from django.template.loader import get_template
+from io import BytesIO
 from django.http import HttpResponse
+from django.template.loader import get_template
+import xhtml2pdf.pisa as pisa
 
 from blog.variable import *
 
@@ -19,7 +20,9 @@ class Render:
 	def render(path, params):
 		template = get_template(path)
 		html = template.render(params)
-		pdf_file = HTML(string=html).write_pdf()
-		response = HttpResponse(pdf_file.encode("UTF-8"), content_type='application/pdf')
-		response['Content-Disposition'] = 'filename="home_page.pdf"'
-		return response
+		response = BytesIO()
+		pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), response)
+		if not pdf.err:
+			return HttpResponse(response.getvalue(), content_type='application/pdf')
+		else:
+			return HttpResponse("Error Rendering PDF", status=400)
