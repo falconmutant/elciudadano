@@ -8,26 +8,30 @@
     <meta content="telephone=no" name="format-detection">
     <title></title>
 	<style type="text/css">
-		body{
+		.body{
+			width: 900px;
 			background-color: rgb(255, 130, 0);
 		}
 		.header{
 			background-color: white;
 			height: 100px;
 			left: 100px;
-			width: 900px;
+			width: 600px;
 		}
 		.header img{
 			position: absolute;
 			left: 45%;
 			top: 2%;
+			width: 200px;
 		}
 	</style>
 </head>
 
 <body>
-	<div class="header">
-		<img src="{{ url }}static/images/logo_orange.png">
+	<div class="body">
+		<div class="header">
+			<img src="{{ url }}static/images/logo_orange.png">
+		</div>
 	</div>
 </body>
 

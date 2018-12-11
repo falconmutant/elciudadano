@@ -28,7 +28,7 @@
           <entry key="Django Console" value="605" />
           <entry key="css" value="93" />
           <entry key="dummy" value="4" />
-          <entry key="html" value="2864" />
+          <entry key="html" value="2904" />
           <entry key="js" value="101" />
           <entry key="py" value="2548" />
         </counts>
@@ -36,7 +36,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="93" />
-          <entry key="HTML" value="2864" />
+          <entry key="HTML" value="2904" />
           <entry key="JavaScript" value="101" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="Python" value="3153" />
@@ -65,8 +65,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/pdf.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="255">
+              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -508,8 +508,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/pdf.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="255">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
         </state>
       </provider>
     </entry>
