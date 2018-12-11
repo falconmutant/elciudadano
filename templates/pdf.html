@@ -44,11 +44,6 @@
 <table width="100%" bgcolor="#f6f8f1" border="0" cellpadding="0" cellspacing="0">
 <tr>
   <td>
-    <!--[if (gte mso 9)|(IE)]>
-      <table width="600" align="center" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td>
-    <![endif]-->
     <table bgcolor="#ffffff" class="content" align="center" cellpadding="0" cellspacing="0" border="0">
       <tr>
         <td bgcolor="#FF8300" class="header">
@@ -59,135 +54,41 @@
               </td>
             </tr>
           </table>
-          <!--[if (gte mso 9)|(IE)]>
-            <table width="425" align="left" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td>
-          <![endif]-->
-
-          <!--[if (gte mso 9)|(IE)]>
-                </td>
-              </tr>
-          </table>
-          <![endif]-->
         </td>
       </tr>
+		{% for notice in notices %}
+
       <tr>
+        <td style="background: url('{{ url }}{{ notice.image }}');background-size: 600px 550px;background-position-y: -70px;height:200px;" class="innerpadding borderbottom">
+          <img class="fix" src="" width="100%" border="0" alt="" />
+        </td>
+      </tr>
+	  <tr>
         <td class="innerpadding borderbottom">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td class="h2">
-                Bienvenido a Transpais Infra
+                {{ notice.title }}
               </td>
             </tr>
             <tr>
               <td class="bodycopy">
-                <p align="justify">
-									Hola <b>{{user.first_name}} {{user.last_name}}</b> el departamento de Infraestructura como un medio al servicio de las gerencias de Transporte Federal, LUMX, Urban, Inbox, Turismo, Mantenimiento, Corporativo, Desarrollo Humano e Innovación y Auditoría y Control hace disponible una herramienta que cambiará la forma de solicitar trabajos, mediante la aplicación <b>Transpais Infra</b> en formato para IOS, Android y WEB.
+	              <p align="justify">
+		              {{ notice.text }}
+	              </p>
               </td>
             </tr>
           </table>
         </td>
       </tr>
-      <tr>
-        <td class="innerpadding borderbottom">
-          <table width="115" align="left" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td height="115" style="padding: 0 20px 20px 0;">
-                <img class="fix" src="https://infra.transpais.com.mx/static/img/articulo.png" width="115" height="115" border="0" alt="" />
-              </td>
-            </tr>
-          </table>
-          <!--[if (gte mso 9)|(IE)]>
-            <table width="380" align="left" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td>
-          <![endif]-->
-          <table class="col380" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 380px;">
-            <tr>
-              <td>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                  <tr>
-                    <td class="bodycopy">
-                      <p align='justify' style="margin-top:0;">Algunas funciones de esta herramientas son:<br><br> Dar a conocer los trabajos a los proveedores y darles la oportunidad de cotizar por obtenerlo, logrando tener 3 o mas cotizaciones por determinado trabajo con el objetivo de siempre invertir al menor costo posible.<br><br>Otra de las funciones que se podrán hacer es tener un programa especifico de mantenimientos a las instalaciones y/o equipos, teniendo responsables de ejecutarlos por medio de proveedores y/o personal interno, permitiendo al departamento de Infraestructura, Gerentes generales y jefes de plaza u oficina llevar un control de que estos se realicen el tiempo estimado.</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 20px 0 0 0;">
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-          <!--[if (gte mso 9)|(IE)]>
-                </td>
-              </tr>
-          </table>
-          <![endif]-->
-        </td>
-      </tr>
-      <tr>
-        <td style="background: url('https://scontent.fmty1-1.fna.fbcdn.net/v/t1.0-9/31732309_10156083948475937_2807277451724455936_n.jpg?_nc_cat=0&_nc_eui2=AeHAwD63RR8Kr5v_b9etwB8OegiN8DsA_RG2RaJDQ973MCrM5vwhOMHijdcNk_We22be3YgxYNJxdkfM7cHAzxPV0bEbYGe-mW1UMQOZ3Df1lA&oh=a2b3c3bc4809220bd7fc4b53307de781&oe=5B765F3E');background-size: 600px 550px;background-position-y: -70px;height:200px;" class="innerpadding borderbottom">
-          <img class="fix" src="" width="100%" border="0" alt="" />
-        </td>
-      </tr>
-      <tr>
-        <td class="innerpadding bodycopy">
-					<table width="100%" border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td class="bodycopy">
-								<p align='justify'>A partir de hoy empezaremos a utilizar esta herramienta con el objetivo de mejorar la calidad de nuestro servicio.<br><br><b>Usuario: </b>{{user.username}}<br><b>Contraseña: </b>{{user.username}}</p>
-							</td>
-						</tr>
-						<tr>
-							<td style="padding: 20px 0 0 0;">
-								<table style="margin-left:40px;" class="buttonwrapper"  border="0" cellspacing="0" cellpadding="0">
-									<tr>
-										<td class="button" bgcolor="#1a2880" height="45" width="100">
-											<a href="https://infra.transpais.com.mx">Inicia Sesión</a>
-										</td>
-										<td class="button" height="45">
-										</td>
-										<td class="button" bgcolor="#e05443" height="45">
-											<a href="https://infra.transpais.com.mx/static/archivos/ManualGerente.pdf">Manual de ayuda</a>
+	    {% endfor %}
 
-
-
-<!--
-											<a href="https://infra.transpais.com.mx/static/archivos/ManualCoordinador.pdf">Manual de ayuda</a>
-											<a href="https://infra.transpais.com.mx/static/archivos/ManualProveedor.pdf">Manual de ayuda</a>
-											<a href="https://infra.transpais.com.mx/static/archivos/ManualInfraestructura.pdf">Manual de ayuda</a>
-											<a href="https://infra.transpais.com.mx/static/archivos/ManualJefe.pdf">Manual de ayuda</a>
-											<a href="https://infra.transpais.com.mx/static/archivos/ManualGerente.pdf">Manual de ayuda</a>
-
--->
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<a href="https://play.google.com/store/apps/details?id=com.transpais.app.infra"><img style="width:200px;margin-top:50px;" src="http://www.lactapp.es/blog/wp-content/uploads/2016/06/Botonesdescarga-011.png"></a>
-										</td>
-										<td class="button" height="45">
-										</td>
-										<td>
-											<a href="https://itunes.apple.com/mx/app/transpais-infra/id1286944604?l=en&mt=8"><img style="width:200px;margin-top:50px;" src="https://static1.squarespace.com/static/581bd18003596e16cc905cad/t/581c7c0f29687fefa2d09b31/1478273418759/"></a>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
-
-        </td>
-      </tr>
       <tr>
         <td class="footer" bgcolor="#44525f">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td align="center" class="footercopy">
-                &reg; Transpais Infra 2018<br/>
-                <span class="hide">Cualquier duda y/o comentario estamos a sus ordenes en la extensión 1224 o el móvil 8341412394.<br><br><a href="https://infra.transpais.com.mx">https://infra.transpais.com.mx</a></span>
+                &reg; El Ciudadano Tamaulipas 2018<br/>
               </td>
             </tr>
             <tr>
@@ -198,11 +99,6 @@
         </td>
       </tr>
     </table>
-    <!--[if (gte mso 9)|(IE)]>
-          </td>
-        </tr>
-    </table>
-    <![endif]-->
     </td>
   </tr>
 </table>
