@@ -2,7 +2,6 @@ from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
 import xhtml2pdf.pisa as pisa
-from django.utils.html import strip_tags
 
 from blog.variable import *
 
@@ -20,8 +19,7 @@ class Render:
 	@staticmethod
 	def render(path, params):
 		template = get_template(path)
-		render = template.render(params)
-		html = strip_tags(render)
+		html = template.render(params)
 		response = BytesIO()
 		pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), response)
 		if not pdf.err:
