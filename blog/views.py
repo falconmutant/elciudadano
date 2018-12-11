@@ -52,7 +52,7 @@ def index(request):
 	return render(request, 'index.html', locals())
 
 
-def impresa(requests):
+def impresa(request):
 	meses = []
 	years = Notice.objects.all().distinct('date__year').order_by('-date__year')
 	for year in years:
@@ -69,7 +69,30 @@ def impresa(requests):
 				meses.append(month2+' - '+month1+ ' '+str(month.date).split('-')[0])
 				count = 0
 				print(meses)
-	return render(requests, 'impresa.html', locals())
+	return render(request, 'impresa.html', locals())
+
+
+class PdfDebug(APIView):
+	def get(self, request, year, month1, month2):
+		pos = 0
+		for month in number_to_months:
+			if month == month1:
+				month1 = pos
+			if month == month2:
+				month2 = pos
+			pos += 1
+		notices = Notice.objects.filter(date__year=year, date__month__range=(month1, month2))
+		data = []
+		for notice in notices:
+			data.append({
+				'image': notice.file.get(is_cover=True).file.url,
+				'text': notice.text,
+				'title': notice.title
+			})
+		notices = data
+		url = 'https://elciudadanotamaulipas.mx'
+		return render(request, 'pdf.html', locals())
+
 
 
 class Pdf(APIView):
