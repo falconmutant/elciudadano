@@ -88,7 +88,7 @@ class Pdf(APIView):
 				'image': notice.file.get(is_cover=True).file.url,
 				'text': notice.text
 			})
-		return Render.render('pdf.html', {'notices': data})
+		return Render.render('pdf.html', {'notices': data, 'url': 'https://elciudadanotamaulipas.mx/'})
 
 
 class Single(APIView):
