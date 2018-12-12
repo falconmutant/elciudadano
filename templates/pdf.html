@@ -145,14 +145,16 @@
 </head>
 
 <body>
-	<header class="clearfix">
-      <div id="logo">
-        <img src="{{ url }}{{ notice.image }}">
-      </div>
-      <h1>{{ notice.title }}</h1>
-      <div id="company" class="clearfix">
-        {{ notice.text }}
-      </div>
-    </header>
+	{% for notice in notices %}
+		<header class="clearfix">
+	      <div id="logo">
+	        <img src="{{ url }}{{ notice.image }}">
+	      </div>
+	      <h1>{{ notice.title }}</h1>
+	      <div id="company" class="clearfix">
+	        {{ notice.text }}
+	      </div>
+	    </header>
+	{% endfor %}
 </body>
 </html>

@@ -112,8 +112,7 @@ class Pdf(APIView):
 				'text': notice.text,
 				'title': notice.title
 			})
-			print(notice.file.get(is_cover=True).file.url)
-		return Render.render('pdf.html', {'notices': data, 'url': 'https://elciudadanotamaulipas.mx/'})
+		return Render.render('pdf.html', {'notices': data, 'url': 'https://elciudadanotamaulipas.mx'})
 
 
 class Single(APIView):
